@@ -1,15 +1,3 @@
 .App {
   text-align: center;
 }
-
-.post {
-  border-style: dashed;
-  border-color: blue;
-  border: 2;
-  box-sizing: border-box;
-}
-
-.postTitle {
-  font: 1em sans-serif;
-  font-weight:800
-}

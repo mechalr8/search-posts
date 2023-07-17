@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
+import Grid from "@mui/material/Grid";
 import axios from 'axios'
+import Post from './Post'
 
 const Posts = () => {
     const [apiPosts, setApiPosts] = useState([])
@@ -26,16 +28,11 @@ const Posts = () => {
             />
             <button onClick={searchPosts}>Search</button>
             <div>Count: {filterPosts.length}</div>
-            <ul>
-                {filterPosts.map((post) => {
-                    return (
-                        <div className='post'>
-                            <div className='postTitle'>{post.title}</div>
-                            <div>{post.body}</div>
-                        </div>
-                    )
+            <Grid container spacing={1} style={{marginLeft: 20, marginTop: 10}}>
+                {filterPosts.map((post, id) => {
+                    return <Post post={post} key={id} />;
                 })}
-            </ul>
+            </Grid>
         </div>
     );
 }
