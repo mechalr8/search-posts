@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import Post from './Post'
 
 const Posts = () => {
     const [apiPosts, setApiPosts] = useState([])
@@ -15,28 +14,29 @@ const Posts = () => {
     }, [])
 
     const searchPosts = () => {
-        var result = []
-        console.log(searchText.toLowerCase());
-        console.log(filterPosts);
-        result = apiPosts.filter((item) => {
-            return item.title.toLowerCase().includes(searchText.toLowerCase())
-        })
+        let result = []
+        result = apiPosts.filter((item) => item.title.toLowerCase().includes(searchText.toLowerCase()))
         setFilterPosts(result)
-        console.log(filterPosts);
     }
     return (
-      <div>
-        <input
-          placeholder='Type to search...'
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-        <button onClick={searchPosts}>Search</button>
-        <ul>
-          {filterPosts.map((post, id) => (
-            <Post post={post} key={id} />
-          ))}
-        </ul>
-      </div>
+        <div>
+            <input
+                placeholder='Type to search...'
+                onChange={(e) => setSearchText(e.target.value)}
+            />
+            <button onClick={searchPosts}>Search</button>
+            <div>Count: {filterPosts.length}</div>
+            <ul>
+                {filterPosts.map((post) => {
+                    return (
+                        <div className='post'>
+                            <div className='postTitle'>{post.title}</div>
+                            <div>{post.body}</div>
+                        </div>
+                    )
+                })}
+            </ul>
+        </div>
     );
 }
 

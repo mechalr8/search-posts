@@ -1,11 +1,11 @@
 import React from 'react'
 
 const Post = (props) => {
-  return (
-    <div>
-      <div>{props.id}</div>
-    </div>
-  )
+    return (
+        <div>
+            {props.id}
+        </div>
+    )
 }
 
 export default Post
